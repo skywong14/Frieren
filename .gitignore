@@ -1,0 +1,75 @@
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyd
+*.so
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+.python-version
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Local build / packaging
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Logs
+*.log
+logs/
+
+# Experiment outputs
+outputs/*
+!outputs/.gitkeep
+
+# TensorBoard / trackers
+runs/
+wandb/
+lightning_logs/
+trackio/
+
+# Model weights / checkpoints
+*.ckpt
+*.pt
+*.pth
+*.bin
+*.safetensors
+
+# Local caches
+.cache/
+.huggingface/
+
+# Project data
+# Keep processed datasets and annotations in git, but ignore raw source captures.
+data/raw/**
+!data/raw/.gitkeep
+
+data/processed/**
+!data/processed/.gitkeep
+
+# Review sheets and generated visuals
+outputs/review/**
+
+# Vendored dependencies / local clones
+third_party/diffusers/

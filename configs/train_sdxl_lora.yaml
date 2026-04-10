@@ -1,0 +1,64 @@
+project:
+  # Used to name output folders for both training and inference artifacts.
+  run_name: frieren_sdxl_lora_hd80_single_full_v1
+  output_root: outputs/train
+  seed: 42
+
+model:
+  base_model: /home/rtwang/models/stable-diffusion-xl-base-1.0
+  vae_model: /home/rtwang/models/sdxl-vae-fp16-fix
+
+data:
+  # Diffusers ImageFolder mode expects metadata.jsonl to live under dataset_root.
+  dataset_root: data/datasets/frieren_hd_single80_v1
+  images_dir: data/datasets/frieren_hd_single80_v1/images
+  metadata_path: data/datasets/frieren_hd_single80_v1/metadata.jsonl
+  image_column: image
+  caption_column: text
+  # Fallback prompt used by the training script when a sample-level caption is missing.
+  instance_prompt: sks_frieren, elf girl, long silver hair, pointy ears, white and gold robe
+
+training:
+  # For the 80-image HD single-character set, 768 offers a practical balance
+  # between visual fidelity and the memory limits of a typical 24GB GPU.
+  resolution: 768
+  train_batch_size: 1
+  sample_batch_size: 1
+  gradient_accumulation_steps: 4
+  learning_rate: 0.0001
+  lr_scheduler: constant
+  lr_warmup_steps: 0
+  max_train_steps: 1200
+  checkpointing_steps: 200
+  checkpoints_total_limit: 5
+  mixed_precision: fp16
+  rank: 16
+  train_text_encoder: false
+  gradient_checkpointing: true
+  use_8bit_adam: false
+  enable_xformers_memory_efficient_attention: false
+  random_flip: false
+  center_crop: false
+  dataloader_num_workers: 4
+  report_to: tensorboard
+  resume_from_checkpoint: null
+
+validation:
+  prompt: sks_frieren, elf girl, long silver hair, pointy ears, white and gold robe, upper body portrait, calm expression, soft daylight, fantasy town background, detailed anime illustration
+  num_images: 4
+  every_n_epochs: 5
+
+inference:
+  prompts:
+    - sks_frieren, elf girl, long silver hair, pointy ears, white and gold robe, holding a staff, calm expression, upper body portrait, soft daylight, detailed anime illustration
+    - sks_frieren, elf girl, long silver hair, pointy ears, white and gold robe, standing in a fantasy forest, full body, detailed anime illustration
+    - sks_frieren, elf girl, long silver hair, pointy ears, white and gold robe, casting a spell with a staff, floating magic particles, twilight sky, detailed anime illustration
+    - sks_frieren, elf girl, long silver hair, pointy ears, white and gold robe, walking through a snowy village street at dusk, cinematic composition, detailed anime illustration
+    - sks_frieren, 2d anime elf girl, long silver hair, pointy ears, white and gold robe, standing in a realistic modern train station, photographic lighting, realistic background, anime character rendering
+    - sks_frieren, 2d anime elf girl, long silver hair, pointy ears, white and gold robe, sitting in a realistic cafe interior, shallow depth of field, photographic background, anime character rendering
+  negative_prompt: low quality, worst quality, blurry, bad anatomy, extra fingers, extra limbs, deformed face, distorted eyes, watermark, text, logo
+  num_inference_steps: 30
+  guidance_scale: 7.5
+  height: 768
+  width: 768
+  lora_scale: 1.0

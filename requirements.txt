@@ -1,0 +1,15 @@
+# Minimal runtime dependencies for the Frieren SDXL LoRA MVP.
+# PyTorch is intentionally not pinned here because CUDA wheels depend on the
+# local driver/runtime. Install torch/torchvision separately if you create a
+# fresh environment.
+accelerate>=0.30.0
+datasets>=2.18.0
+diffusers>=0.30.0
+huggingface_hub>=0.24.0
+peft>=0.11.0
+Pillow>=10.0.0
+PyYAML>=6.0.0
+safetensors>=0.4.3
+tensorboard>=2.14.0
+transformers>=4.41.0
+torchvision>=0.18.0
