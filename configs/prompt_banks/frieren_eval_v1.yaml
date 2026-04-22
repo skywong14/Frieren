@@ -1,0 +1,42 @@
+name: frieren_eval_v1
+description: Fixed evaluation prompts for the final Frieren LoRA experiments.
+seed_base: 42
+num_images_per_prompt: 4
+generation:
+  height: 768
+  width: 768
+  num_inference_steps: 30
+  guidance_scale: 7.5
+  negative_prompt: low quality, worst quality, blurry, bad anatomy, extra fingers, extra limbs, deformed face, distorted eyes, watermark, text, logo
+lora_scales:
+  - 1.0
+prompts:
+  - id: p01_2d_portrait
+    group: 2d_frieren
+    title: Standard 2D Portrait
+    prompt: sks_frieren, elf girl, long silver hair, pointy ears, white and gold robe, upper body portrait, calm expression, soft daylight, detailed anime illustration
+  - id: p02_2d_full_body
+    group: 2d_frieren
+    title: 2D Full Body Fantasy Scene
+    prompt: sks_frieren, elf girl, long silver hair, pointy ears, white and gold robe, full body, standing in a fantasy forest, calm expression, detailed anime illustration
+  - id: p03_2d_spellcasting
+    group: 2d_frieren
+    title: 2D Spellcasting Action
+    prompt: sks_frieren, elf girl, long silver hair, pointy ears, white and gold robe, casting a spell with a staff, glowing magic particles, twilight sky, detailed anime illustration
+  - id: p04_real_train_station
+    group: realistic_world
+    title: 2D Character In Realistic Train Station
+    prompt: sks_frieren, 2d anime elf girl, long silver hair, pointy ears, white and gold robe, standing in a realistic modern train station, photographic lighting, realistic background, anime character rendering
+  - id: p05_real_cafe
+    group: realistic_world
+    title: 2D Character In Realistic Cafe
+    prompt: sks_frieren, 2d anime elf girl, long silver hair, pointy ears, white and gold robe, sitting in a realistic cafe interior, shallow depth of field, photographic background, anime character rendering
+  - id: p06_semireal_portrait
+    group: semi_realistic_3d
+    title: Semi-realistic Frieren Portrait
+    prompt: sks_frieren, semi-realistic elf girl, long silver hair, pointy ears, white and gold robe, realistic fantasy portrait, cinematic lighting, detailed face
+  - id: p07_3d_render
+    group: semi_realistic_3d
+    title: 3D Stylized Character Render
+    prompt: sks_frieren, 3d stylized elf girl, long silver hair, pointy ears, white and gold robe, cinematic lighting, high quality 3d character render
+

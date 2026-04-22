@@ -5,8 +5,8 @@ project:
   seed: 42
 
 model:
-  base_model: /home/rtwang/models/stable-diffusion-xl-base-1.0
-  vae_model: /home/rtwang/models/sdxl-vae-fp16-fix
+  base_model: /map-vepfs/models/stable-diffusion-xl-base-1.0
+  vae_model: /map-vepfs/models/sdxl-vae-fp16-fix
 
 data:
   # Diffusers ImageFolder mode expects metadata.jsonl to live under dataset_root.

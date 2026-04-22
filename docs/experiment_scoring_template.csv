@@ -1,0 +1,6 @@
+model,prompt_group,prompt_id,identity_consistency,prompt_following,image_quality,style_transfer,failure_count,total_images,notes
+B0_base_sdxl,2d_frieren,p01_2d_portrait,,,,,,4,
+L80_structured,2d_frieren,p01_2d_portrait,,,,,,4,
+L100_structured,2d_frieren,p01_2d_portrait,,,,,,4,
+L80_simple,2d_frieren,p01_2d_portrait,,,,,,4,
+

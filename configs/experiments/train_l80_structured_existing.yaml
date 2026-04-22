@@ -1,0 +1,48 @@
+project:
+  run_name: frieren_sdxl_lora_hd80_single_full_v1
+  output_root: outputs/train
+  seed: 42
+
+model:
+  base_model: /map-vepfs/models/stable-diffusion-xl-base-1.0
+  vae_model: /map-vepfs/models/sdxl-vae-fp16-fix
+
+data:
+  dataset_root: data/datasets/frieren_hd_single80_v1
+  images_dir: data/datasets/frieren_hd_single80_v1/images
+  metadata_path: data/datasets/frieren_hd_single80_v1/metadata.jsonl
+  image_column: image
+  caption_column: text
+  instance_prompt: sks_frieren, elf girl, long silver hair, pointy ears, white and gold robe
+
+training:
+  resolution: 768
+  train_batch_size: 1
+  sample_batch_size: 1
+  gradient_accumulation_steps: 4
+  learning_rate: 0.0001
+  lr_scheduler: constant
+  lr_warmup_steps: 0
+  max_train_steps: 1200
+  checkpointing_steps: 200
+  checkpoints_total_limit: 5
+  mixed_precision: fp16
+  rank: 16
+  train_text_encoder: false
+  gradient_checkpointing: true
+  use_8bit_adam: false
+  enable_xformers_memory_efficient_attention: false
+  random_flip: false
+  center_crop: false
+  dataloader_num_workers: 4
+  report_to: tensorboard
+  resume_from_checkpoint: null
+
+validation:
+  prompt: sks_frieren, elf girl, long silver hair, pointy ears, white and gold robe, upper body portrait, calm expression, soft daylight, fantasy town background, detailed anime illustration
+  num_images: 4
+  every_n_epochs: 5
+
+inference:
+  prompt_bank: configs/prompt_banks/frieren_eval_v1.yaml
+
